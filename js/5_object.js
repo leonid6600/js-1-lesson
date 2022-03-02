@@ -22,6 +22,37 @@
 // console.log(numberOfHobbies); // 3
 
 
+// Обращение к свойствам объекта
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+//   isPublic: true,
+//   rating: 8.38,
+// };
+// console.log(book.title);
+// console.log(book.genres);
+
+
+// Обращение к вложенным свойствам объекта
+// const propName = "name";
+// const user = {
+//   name: "Jacques Gluke",
+//   tag: "jgluke",
+//   [propName]: "Генри Сибола",  // так вставляется объект, имя которого изначального неопределено
+//   location: {
+//     country: "Jamaica",
+//     city: "Ocho Rios",
+//     hobbies: ["swiming", "music", "sci-fi"],
+//   },
+// };
+// console.log(user.location.country);
+// console.log(user.location.hobbies[1]);
+// console.log(user.name);
+// console.log(user);
+
+
+
 
 // const book = {
 //   title: "The Last Kingdom",
@@ -116,8 +147,61 @@
 //     }
 //   }
 // }
-
 // // console.log(calcTotalPrice(stones, "Сапфир"));
+
+
+
+
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// this - это способ доступа к методам (функциям, циклам и т.д.)
+// храянщимся в свойствах объекта
+// Значением this будет объект перед «точкой», то есть объект который вызвал этот метод
+
+// const bookShelf = {
+//   books: ["The Last Kingdom"],
+//   getBooks() {
+//     console.log(this);
+//   }
+// };
+
+// // Перед точкой стоит объект bookShelf,
+// // поэтому при вызове метода, this будет хранить ссылку на него.
+// bookShelf.getBooks(); // {books: ['The Last Kingdom'], getBooks: f}
+
+
+
+// const bookShelf = {
+//   books: ["The Last Kingdom"],
+//   getBooks() {
+//     return this.books;
+//   },
+//   addBook(bookName) {
+//     this.books.push(bookName);
+//   },
+//   removeBook(bookName) {
+//     const bookIndex = this.books.indexOf(bookName);
+//     this.books.splice(bookIndex, 1);
+//   },
+// };
+
+// console.log(bookShelf.getBooks()); // ["The Last Kingdom"]
+
+// bookShelf.addBook("The Mist");
+// bookShelf.addBook("Dream Guardian");
+
+// console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'The Mist', 'Dream Guardian']
+
+// bookShelf.removeBook("The Mist");
+
+// console.log(bookShelf.getBooks()); // ['The Last Kingdom', 'Dream Guardian']
+
+
+
+
+
 
 // /**
 //  * 4. Для объекта garage написать функцию addCar и removeCar
@@ -291,3 +375,136 @@
 // }
 // console.log(findSmallestNumber([0, 5, 9, 234, -35, 100]));
 // console.log(Math.max(...findSmallestNumber([891, 234])));
+
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Object.create() - Создает новый объект на сонове старого, 
+// при этом все новые свойсива нового объекта хранятся прямо в нем,
+// а все старые свойство от старого объекта лежат в прототипе!
+// Соответственно если меняются свойства старого объекта, 
+// то и у нового они тоже изменяться в его прототипе,
+// а в новый объект можно добавлять новые свойства, 
+// которые не отобразятся в старом.
+// Если в новый объект добавить свойство с таким же именем как в старом,
+// то оно отобразится сразу в нем, а старое свойство останется в прототипе неизменнным! 
+
+// const animal = {
+//   legs: 4,
+// };
+// const dog = Object.create(animal);
+
+// console.log(animal);
+// console.log(dog);
+
+// dog.name = "Манго";
+// dog.legs = 10;
+
+// console.log(dog);
+
+// console.log(dog.name);
+// console.log(dog.legs);
+
+
+
+
+// hasOwnProperty() - метод, который узнает собственное ли свойство у объекта или
+// это свойства от старого объекта которое лежит в прототипе.
+// const animal = {
+//   legs: 4,
+// };
+// const dog = Object.create(animal);
+// dog.name = "Манго";
+
+// console.log(dog.hasOwnProperty("name")); // true
+// console.log(dog.hasOwnProperty("legs")); // false
+
+
+
+
+
+// Object.keys(), который возвращает массив ключей его собственных свойств
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+//   rating: 8.38,
+// };
+// const keys = Object.keys(book);
+// console.log(keys);  //['title', 'author', 'genres', 'rating']
+
+// // можно удобно перебрать собственные свойства объект
+// for (const key of keys) {
+//   console.log(key);     // Ключ
+//   console.log(book[key]);     // Значение свойства
+// }
+
+
+
+
+// Object.values() возвращает массив значений его собственных свойств
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   rating: 8.38,
+// };
+// const keys = Object.keys(book);
+// console.log(keys); // ['title', 'author', 'rating']
+
+// const values = Object.values(book);
+// console.log(values); // ['The Last Kingdom', 'Bernard Cornwell', 8.38]
+
+
+
+// Object.entries(obj) возвращает массив записей, каждым элементом которого
+// будет еще один массив из 2 - х элементов: имени свойства
+// и значения этого свойства из объекта obj.
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   rating: 8.38,
+// };
+// const entries = Object.entries(book);
+// console.log(entries);
+// // [["title", "The Last Kingdom"], ["author", "Bernard Cornwell"], ["rating", 8.38]]
+
+
+
+// Массив объектов   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// const books = [
+//   {
+//     title: "The Last Kingdom",
+//     author: "Bernard Cornwell",
+//     rating: 8.38,
+//   },
+//   {
+//     title: "На берегу спокойных вод",
+//     author: "Роберт Шекли",
+//     rating: 8.51,
+//   },
+//   {
+//     title: "Сон смешного человека",
+//     author: "Федор Достоевский",
+//     rating: 7.75,
+//   },
+// ];
+
+// for (const book of books) {
+//   // Объект книги
+//   console.log(book);
+//   // Название
+//   console.log(book.title);
+//   // Автор
+//   console.log(book.author);
+//   // Рейтинг
+//   console.log(book.rating);
+// }
+
+// let totalRating = 0;
+// for (const book of books) {
+//   totalRating += books.rating;
+// };
+// const averageRating = (totalRating / books.length).toFixed(1);
+// console.log(averageRating); // 8.2
+
