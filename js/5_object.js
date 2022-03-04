@@ -69,6 +69,145 @@
 // }
 
 
+// Обращение к свойству объекта через точку
+// const apartment = {
+//   imgUrl: "https://via.placeholder.com/640x480",
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+//   owner: {
+//     name: "Henry",
+//     phone: "982-126-1588",
+//     email: "henry.carter@aptmail.com",
+//   },
+// };
+// const ownerName = apartment.owner.name;
+// const ownerPhone = apartment.owner.phone;
+// const ownerEmail = apartment.owner.email;
+// const numberOfTags = apartment.tags.length;
+// const firstTag = apartment.tags[0];
+// const lastTag = apartment.tags[apartment.tags.length - 1];
+
+// console.log(ownerEmail);
+// console.log(numberOfTags);
+// console.log(firstTag);
+// console.log(lastTag);
+
+
+
+// ОБращение к свойству объекта через квадратные скобки
+// const apartment = {
+//   price: 2153,
+//   tags: ["premium", "promoted", "top"],
+// };
+// const aptPrice = apartment['price'];
+// const aptTags = apartment['tags'];
+
+
+
+// Замена значения свойств в объекте
+// const book = {
+//   public: true,
+//   rating: 8.38,
+//   genres: ["rose", "adventure"],
+// };
+
+// book.rating = 9;
+// book.public = false;
+// book.genres.push("drama");
+// book.photo = "Yes";
+
+// console.log(book); // 9
+// console.log(book.public); // false
+
+
+
+// const apartment = {
+//   price: 5000,
+// };
+// apartment.area = 60;
+// apartment.rooms = 3;
+// // apartment.location = {};
+// // apartment.location.country = "Jamaica";
+// // apartment.location.city = "Kingston";
+// // или сожно вот так сделать
+// apartment.location = { country: "Jamaica", city: "Kingston", };
+// // или еще усложнить
+// apartment.location = { country: "Jamaica", city: "Kingston", street: {travel: "Sovetskaya"},};
+// console.log(apartment);
+
+
+
+// const apartment = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+// };
+// const keys = [];
+// const values = [];
+// for (const key in apartment){
+//   keys.push(key);
+//   values.push(apartment[key]);
+// }
+// console.log(keys);
+// console.log(values);
+
+
+
+
+// function countProps(object) {
+//   let propCount = 0;
+//   for(const prop in object){
+//     if(object.hasOwnProperty(prop)){
+//       propCount += 1;
+//     }
+//   }
+//   return propCount;
+// }
+// console.log(countProps({ mail: "poly@mail.com", isOnline: true, score: 500 }));
+
+
+
+// const book = {
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+//   rating: 8.38,
+// };
+// // const keys = Object.keys(book);
+// for (const key of Object.keys(book)) {
+//   console.log(key);
+//   console.log(book[key]);
+// }
+
+
+
+
+// const apartment = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+// };
+// // let values = [];
+// // let keys = [];
+// // for(const prop of Object.keys(apartment)){
+// //   keys.push(prop);
+// //   values.push(apartment[prop])
+// // }
+// // еще можно так сделать
+// const values = [];
+// const keys = Object.keys(apartment);
+// for(const prop of keys){
+//   values.push(apartment[prop])
+// }
+// console.log(keys);
+// console.log(values);
+
+
+
+
+
+
 /* 
 1. Напиши скрипт, который, для объекта user, последовательно:
 добавляет поле mood со значением 'happy'
